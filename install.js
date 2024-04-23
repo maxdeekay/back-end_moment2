@@ -24,10 +24,10 @@ client.query(`
     DROP TABLE IF EXISTS workexperience;
     CREATE TABLE workexperience (
         id          SERIAL PRIMARY KEY,
-        companyname VARCHAR(255),
-        jobtitle    VARCHAR(255),
-        location    VARCHAR(255),
-        startdate   DATE,
+        companyname VARCHAR(255) NOT NULL,
+        jobtitle    VARCHAR(255) NOT NULL,
+        location    VARCHAR(255) NOT NULL,
+        startdate   DATE NOT NULL,
         enddate     DATE,
         description VARCHAR(255)
     )
