@@ -7,6 +7,7 @@ APIet finns tillgängligt på följande URL: https://back-end-moment2.onrender.c
 <h2>Installation, databas</h2>
 APIet använder en PostgreSQL-databas. Klona detta repo och kör kommandot npm install för att installera nödvändiga npm-paket. Kör installationsskriptet install.js som skapar databastabellen enligt nedstående:
 <br>
+<br>
 <table>
   <tr>
     <th>Tabell-namn</th>
@@ -20,6 +21,7 @@ APIet använder en PostgreSQL-databas. Klona detta repo och kör kommandot npm i
 
 <h2>Användning</h2>
 Nedan finns beskrivet hur man kan använda APIet:
+<br>
 <br>
 <table>
   <tr>
@@ -46,7 +48,7 @@ Nedan finns beskrivet hur man kan använda APIet:
     <td>DELETE</td>
     <td>/experience/:ID</td>
     <td>Raderar en kurs med angivet ID.</td>
-  </tr>****
+  </tr>
 </table>
 
 Ett arbetserfarenhets-objekt returneras/skickas som JSON med följande struktur:
