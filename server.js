@@ -40,7 +40,7 @@ app.get("/api/experience", (req, res) => {
 // Add to database
 app.post("/api/experience", (req, res) => {
     const {companyname, jobtitle, location, startdate, enddate, description} = req.body;
-    console.log(companyname);
+    
     // Error handling
     if (!companyname || !jobtitle || !location || !startdate) {
         return res.status(400).json({
@@ -49,19 +49,18 @@ app.post("/api/experience", (req, res) => {
         });
     }
     
-    const isValidDate = (date) => !isNaN(new Date(date).getDate());
-
     // Date validation
+    const isValidDate = (date) => !isNaN(new Date(date).getDate());
     if (isValidDate(startdate) && (!enddate || isValidDate(enddate))) {
         // Add work experience
         client.query(`
             INSERT INTO workexperience (companyname, jobtitle, location, startdate, enddate, description)
             VALUES ($1, $2, $3, $4, $5, $6)
             RETURNING *
-        `, [companyname, jobtitle, location, startdate, enddate, description], (err, result) => {
+        `, [companyname, jobtitle, location, startdate, enddate.length > 0 ? enddate : null, description], (err, result) => {
         if (err) return res.status(500).json({error: "Unexpected " + err});
 
-        res.json({message: "Experience added", experience: result.rows[0]});
+        res.json({message: "Experience added.", experience: result.rows[0]});
     }); 
     } else {
         return res.status(400).json({message: "Invalid date format"});
